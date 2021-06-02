@@ -6,7 +6,10 @@ local_settings.py
 /static/
 /venv/
 /myenv/
-/data/
+/lesson2/data/
+/lesson3/data/
+/parse_members_bundestag/
 *.html
 *.csv
 *.json
+*.txt
