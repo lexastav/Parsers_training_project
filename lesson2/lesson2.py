@@ -18,11 +18,13 @@ HEADERS = {
 }
 
 
-def get_index_page():
+def get_index_page(url, headers):
 
-    """Тащит нужную нам страницу по указанному url"""
+    """
+    Тащит нужную нам страницу по указанному url. В данном случае нам нужна страница со списком всех категорий
+    """
 
-    req = requests.get(URL, headers=HEADERS)
+    req = requests.get(url, headers=headers)
     src = req.text
     # print(src)
 
@@ -32,7 +34,9 @@ def get_index_page():
 
 def get_all_categories_json():
 
-    """Достает ссылки на категории и сохраняет их в json"""
+    """
+    Достает ссылки на категории и сохраняет их в json
+    """
 
     with open('index.html', encoding='utf-8') as file:
         src = file.read()
@@ -51,7 +55,13 @@ def get_all_categories_json():
         json.dump(all_categories_dict, file, indent=4,  ensure_ascii=False)
 
 
-def main():
+def get_data():
+
+    """
+    Главная функция, котороя достает html страницы по ссылкам, парсит нужные нам данные, сохраняет их в отдельные
+    файлы форматов csv и json
+    """
+
     with open('all_categories_dict.json', encoding='utf-8') as file:
         all_categories = json.load(file)
         # print(all_categories)
@@ -158,7 +168,14 @@ def main():
             sleep(randrange(1, 2))
 
 
+def main():
+    # get_index_page(URL, HEADERS)
+    # get_all_categories_json()
+    get_data()
 
+
+if __name__ == '__main__':
+    main()
 
 
 
