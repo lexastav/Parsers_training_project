@@ -9,7 +9,9 @@ local_settings.py
 /lesson2/data/
 /lesson3/data/
 /parse_members_bundestag/
+lesson5/media/
 *.html
 *.csv
 *.json
 *.txt
+
