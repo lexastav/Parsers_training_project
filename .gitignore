@@ -14,4 +14,7 @@ lesson5/media/
 *.csv
 *.json
 *.txt
+*.zip
+*.exe
+
 
