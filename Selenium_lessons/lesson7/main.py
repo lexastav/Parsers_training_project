@@ -1,5 +1,6 @@
 from selenium import webdriver
 import time
+from datetime import datetime
 
 from settings import (URL,
                       WEBDRIVER_PATH_FIREFOX,
@@ -21,6 +22,7 @@ def get_html_by_chrome(url):
     driver = webdriver.Chrome(executable_path=WEBDRIVER_PATH_CHROME, options=options)
 
     try:
+        start_time = datetime.now()
         # прыгаем на ссылку нужной нам категории
         driver.get(url)
         print(f'Currently URL is: {driver.current_url}')
@@ -60,6 +62,8 @@ def get_html_by_chrome(url):
         # это второй объект.
         joined_date = driver.find_elements_by_class_name('seller-info-value')[1]
         print(username.text, ad_date.text, joined_date.text, sep='\n')
+        finish_time = datetime.now()
+        print(finish_time - start_time)
 
     except Exception as ex:
         print(ex)
@@ -78,10 +82,11 @@ def get_html_by_firefox(url):
     driver = webdriver.Firefox(executable_path=WEBDRIVER_PATH_FIREFOX, options=options)
 
     try:
+        start_time = datetime.now()
         # прыгаем на ссылку нужной нам категории
         driver.get(url)
         print(f'Currently URL is: {driver.current_url}')
-        driver.implicitly_wait(10)  # очень полезный модуль, в отличии от sleep(), он не ждет все время, то есть если
+        driver.implicitly_wait(5)  # очень полезный модуль, в отличии от sleep(), он не ждет все время, то есть если
         # наша страница загрузится за 1 секунду, программа перейдет к выполнению другой процедуры, а не будет ждать все
         # секунды в скобках, может значительно ускорить выполнение скрипта.
         # получаем список всех товаров на странице,
@@ -90,7 +95,7 @@ def get_html_by_firefox(url):
         print(len(items))
         # кликнем на первый и он откроется в новой вкладке
         items[0].click()
-        time.sleep(5)
+        driver.implicitly_wait(5)
         #  а так можно переключаться между вкладками
         driver.switch_to.window(driver.window_handles[1])
         print(f'Currently URL is: {driver.current_url}')
@@ -103,11 +108,11 @@ def get_html_by_firefox(url):
         print(f'Currently URL is: {driver.current_url}')
         # обратимся к другому элементу и спарсим еще что-нибудь, у нас откроется новая вкладка
         items[1].click()
-        time.sleep(5)
+        driver.implicitly_wait(5)
 
         # перемещаемся к ней
         driver.switch_to.window(driver.window_handles[1])
-        time.sleep(5)
+        driver.implicitly_wait(5)
         print(f'Currently URL is: {driver.current_url}')
         username = driver.find_element_by_xpath('//div[@data-marker="seller-info/name"]')
 
@@ -119,6 +124,8 @@ def get_html_by_firefox(url):
         # это второй объект.
         joined_date = driver.find_elements_by_class_name('seller-info-value')[1]
         print(username.text, ad_date.text, joined_date.text, sep='\n')
+        finish_time = datetime.now()
+        print(finish_time - start_time)
 
     except Exception as ex:
         print(ex)
@@ -128,7 +135,7 @@ def get_html_by_firefox(url):
 
 def main():
     get_html_by_chrome(URL)
-    # get_html_by_firefox(URL)
+    get_html_by_firefox(URL)
 
 
 if __name__ == '__main__':

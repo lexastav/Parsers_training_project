@@ -1,4 +1,6 @@
-URL = 'https://www.avito.ru/stavropol/tovary_dlya_kompyutera/komplektuyuschie/videokarty'
+URLS_LIST = [
+    'https://stackoverflow.com', 'https://instagram.com', 'https://vk.com'
+             ]
 
 WEBDRIVER_PATH_CHROME = 'C:\\Users\\lexas\\MyDjangoProjects\\Parsers_training_project\\chromedriver.exe'
 
