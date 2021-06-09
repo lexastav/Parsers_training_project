@@ -2,9 +2,11 @@ URLS_LIST = [
     'https://stackoverflow.com', 'https://instagram.com', 'https://vk.com'
              ]
 
+URL = 'https://www.tiktok.com/'
+
 WEBDRIVER_PATH_CHROME = 'C:\\Users\\lexas\\MyDjangoProjects\\Parsers_training_project\\chromedriver.exe'
 
-WEBDRIVER_PATH_FIREFOX = 'C:\\Users\\lexas\\MyDjangoProjects\\Parsers_training_project\\geckodriver.exe'
+WEBDRIVER_PATH_FIREFOX = 'C:\\Users\\lexas\\PycharmProjects\\Training_projects\\Parsers_training_project\\Selenium_lessons\\geckodriver.exe'
 
 USERAGENT_FIREFOX = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0'
 USERAGENT_CHROME = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
